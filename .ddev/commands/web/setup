@@ -27,14 +27,12 @@ php artisan db:seed --force
 
 php artisan storage:link || true
 
-cat <<'DONE'
-
-Klaar.
-
-  Winkel      https://laravel-lunar-tech-interview.ddev.site
-  Adminpaneel https://laravel-lunar-tech-interview.ddev.site/lunar
-
-  Klant       klant@interview.test / password
-  Beheerder   admin@interview.test / password
-
-DONE
+echo
+echo "Klaar."
+echo
+echo "  Winkel      ${DDEV_PRIMARY_URL}"
+echo "  Adminpaneel ${DDEV_PRIMARY_URL}/lunar"
+echo
+echo "  Klant       klant@interview.test / password"
+echo "  Beheerder   admin@interview.test / password"
+echo

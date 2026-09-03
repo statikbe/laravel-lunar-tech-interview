@@ -1,34 +1,111 @@
-<p align="center"><a href="https://lunarphp.com/" target="_blank"><img src="https://raw.githubusercontent.com/lunarphp/art/main/lunar-logo.svg" width="200" alt="Lunar"></a></p>
+# Interview-webshop
 
-# Starter Kit
+Een Laravel-applicatie met [Lunar](https://lunarphp.com), een headless
+e-commercepakket voor Laravel.
 
-This repository is provided as a reference to learn how to use Lunar Laravel E-Commerce package. This example is a classic e-commerce store.
+Deze README helpt je met de omgeving: opstarten, testen, en weten waar
+jouw code ophoudt en het pakket begint. Ze helpt je bewust *niet* met het
+domein — hoe Lunar dingen modelleert zoek je zelf uit, en dat hoort bij
+de opdracht.
 
-> **Warning**
-> This application is purely an example of how you can implement Lunar headless e-commerce for Laravel. It is not production ready or complete.
+De opdracht staat in [`OPDRACHT.md`](OPDRACHT.md).
 
-# Installation
+## Opstarten
 
-For full installation instructions please visit [https://docs.lunarphp.com/](https://docs.lunarphp.com/)
-
-## Installation with Docker
-
-> Make sure you have Docker installed on your local machine.
-
-### Environment Demo store
-
-You can execute it via the `docker compose up` command in your favorite terminal. 
-Please note that the speed of building images and initializing containers depends on your local machine and internet connection - it may take some time. 
+Je hebt alleen [DDEV](https://ddev.com) nodig. Geen PHP, geen MySQL, geen
+Composer op je eigen machine.
 
 ```bash
-cp .env.docker.example .env
-docker-compose up
+ddev start
+ddev launch
 ```
 
-The demo store will be available to `http://localhost` in your browser.
+De eerste keer duurt dit een paar minuten. Daarna:
 
-####  Log into Lunar panel
+| | |
+|---|---|
+| Winkel | <https://laravel-lunar-tech-interview.ddev.site> |
+| Adminpaneel | <https://laravel-lunar-tech-interview.ddev.site/lunar> |
 
-Once the project is prepared, the Lunar panel will start and available to `http://localhost/lunar`. 
+Inloggen:
 
-Default admin user is username `admin@lunarphp.io` and password `password`
+| Rol | E-mail | Wachtwoord |
+|---|---|---|
+| Klant | `kandidaat@interview.test` | `password` |
+| Beheerder | `admin@interview.test` | `password` |
+
+Opnieuw beginnen met verse data:
+
+```bash
+ddev artisan migrate:fresh --seed
+```
+
+## Tests draaien
+
+```bash
+ddev artisan test
+```
+
+Dertig tests, ongeveer zeven seconden. Eén bestand filteren:
+
+```bash
+ddev artisan test --filter=CartTotalsTest
+```
+
+De tests draaien op een aparte database (`testing`), dus de demo-data in
+de winkel blijft staan als je ze draait.
+
+## Artisan, composer, database
+
+Alles loopt via DDEV, niet via je eigen PHP:
+
+```bash
+ddev artisan tinker
+ddev composer require vendor/package
+ddev mysql
+ddev logs -f
+```
+
+## Waar staat wat
+
+| Wat | Waar |
+|---|---|
+| Onze eigen code | `app/` |
+| Onze tests | `tests/Feature/` |
+| Tests van de starter kit | `tests/Unit/` |
+| Seeders | `database/seeders/` |
+| Configuratie van Lunar | `config/lunar/` |
+| Lunar zelf | `vendor/lunarphp/` |
+
+Lunar is een Composer-pakket. Wil je weten hoe iets werkt, dan lees je de
+broncode in `vendor/lunarphp/`. Dat is hier geen laatste redmiddel maar
+de normale manier van werken — de documentatie op
+<https://docs.lunarphp.com> dekt lang niet alles.
+
+## Waar deze codebase vandaan komt
+
+Dit is de
+[Lunar Livewire starter kit](https://github.com/lunarphp/livewire-starter-kit),
+een referentie-implementatie van een klassieke webshop. De makers noemen
+hem uitdrukkelijk niet productieklaar. Wij hebben hem opgetild naar
+Laravel 13 en Lunar 1.5, er vaste inloggegevens in gezet en een paar
+tests toegevoegd.
+
+Met andere woorden: dit is echte code met echte ruwe randen, niet iets
+wat voor jou is schoongepoetst. Kom je iets tegen dat raar is, dan is dat
+waarschijnlijk gewoon zo.
+
+## Als er iets stukgaat
+
+De database is nog niet klaar bij `ddev start`. Wacht vijftien seconden
+en probeer opnieuw.
+
+Een klasse wordt niet gevonden na een `composer`-actie:
+
+```bash
+ddev composer dump-autoload
+ddev artisan optimize:clear
+```
+
+Kom je er niet uit: vraag het. Vastlopen op de omgeving hoort niet bij
+wat we willen meten.

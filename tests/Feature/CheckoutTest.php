@@ -58,7 +58,7 @@ class CheckoutTest extends TestCase
         $cart = $this->cartReadyForCheckout();
 
         $cartTotal = $cart->total->value;
-        $this->assertGreaterThan(0, $cartTotal, 'De winkelwagen is leeg gebleven.');
+        $this->assertGreaterThan(0, $cartTotal, 'The cart stayed empty.');
 
         $order = $cart->createOrder();
 
@@ -66,7 +66,7 @@ class CheckoutTest extends TestCase
         $this->assertSame(
             $cartTotal,
             $order->total->value,
-            'Het ordertotaal wijkt af van wat de klant in de winkelwagen zag.',
+            'The order total differs from what the customer saw in the cart.',
         );
     }
 
@@ -79,7 +79,7 @@ class CheckoutTest extends TestCase
         $this->assertSame(
             $cart->lines->count(),
             $order->productLines->count(),
-            'Er zijn regels verdwenen tussen winkelwagen en bestelling.',
+            'Lines went missing between cart and order.',
         );
     }
 

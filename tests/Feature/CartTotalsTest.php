@@ -83,7 +83,7 @@ class CartTotalsTest extends TestCase
 
         $this->assertNull(
             $cart->shippingTotal,
-            'Zonder gekozen verzendoptie hoort er geen verzendbedrag te staan.',
+            'There should be no shipping cost until an option is chosen.',
         );
     }
 

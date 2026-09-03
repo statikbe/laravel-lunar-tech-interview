@@ -12,11 +12,10 @@ use Lunar\Models\CartAddress;
 use Lunar\Models\Country;
 use Lunar\Models\TaxClass;
 use Lunar\Models\TaxZone;
+use PHPUnit\Framework\Attributes\Group;
 use Tests\TestCase;
 
-/**
- * @group livewire.components.checkout
- */
+#[Group('livewire.components.checkout')]
 class CheckoutPageTest extends TestCase
 {
     use RefreshDatabase;
@@ -38,8 +37,6 @@ class CheckoutPageTest extends TestCase
 
     /**
      * Test the component mounts correctly.
-     *
-     * @group moomoo
      *
      * @return void
      */

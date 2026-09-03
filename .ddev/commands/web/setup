@@ -25,7 +25,7 @@ php artisan lunar:install --no-interaction
 echo "==> Demodata en vaste logins"
 php artisan db:seed --force
 
-php artisan storage:link || true
+php artisan storage:link --force
 
 echo "==> Frontend bouwen"
 npm install --no-audit --no-fund

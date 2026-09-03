@@ -64,7 +64,7 @@ class CustomerLoginTest extends TestCase
         CartSession::add($this->aVariant(), 1);
         $guestCart = CartSession::current();
 
-        $this->assertNull($guestCart->user_id, 'De gastwinkelwagen hoort nog geen gebruiker te hebben.');
+        $this->assertNull($guestCart->user_id, 'A guest cart should not belong to a user yet.');
 
         Livewire::test(LoginPage::class)
             ->set('email', 'klant@interview.test')
@@ -76,7 +76,7 @@ class CustomerLoginTest extends TestCase
         $this->assertSame(
             $user->id,
             Cart::find($guestCart->id)->user_id,
-            'De winkelwagen is niet meegegaan naar de ingelogde klant.',
+            'The cart did not follow the customer who signed in.',
         );
     }
 
@@ -95,7 +95,7 @@ class CustomerLoginTest extends TestCase
         $this->assertSame(
             $user->latestCustomer()->id,
             Cart::find($guestCart->id)->customer_id,
-            'De winkelwagen hangt niet aan de Lunar-klant, dus een wallet op Customer is niet te vinden.',
+            'The cart is not linked to the Lunar customer, so a balance held on Customer cannot be found.',
         );
     }
 
@@ -103,8 +103,8 @@ class CustomerLoginTest extends TestCase
     {
         $this->get('/')
             ->assertOk()
-            ->assertSee('Inloggen')
-            ->assertDontSee('Uitloggen');
+            ->assertSee('Sign in')
+            ->assertDontSee('Sign out');
     }
 
     public function test_the_navigation_shows_who_is_signed_in(): void
@@ -115,7 +115,7 @@ class CustomerLoginTest extends TestCase
             ->get('/')
             ->assertOk()
             ->assertSee($user->name)
-            ->assertSee('Uitloggen');
+            ->assertSee('Sign out');
     }
 
     public function test_a_customer_can_sign_out(): void

@@ -19,29 +19,29 @@ class TaxSeeder extends Seeder
     {
         $taxClass = TaxClass::first();
 
-        $ukCountry = Country::firstWhere('iso3', 'GBR');
+        $country = Country::firstWhere('iso3', 'BEL');
 
-        $ukTaxZone = TaxZone::factory()->create([
-            'name' => 'UK',
+        $taxZone = TaxZone::factory()->create([
+            'name' => 'Belgium',
             'active' => true,
             'default' => true,
             'zone_type' => 'country',
         ]);
 
         TaxZoneCountry::factory()->create([
-            'country_id' => $ukCountry->id,
-            'tax_zone_id' => $ukTaxZone->id,
+            'country_id' => $country->id,
+            'tax_zone_id' => $taxZone->id,
         ]);
 
-        $ukRate = TaxRate::factory()->create([
-            'name' => 'VAT',
-            'tax_zone_id' => $ukTaxZone->id,
+        $rate = TaxRate::factory()->create([
+            'name' => 'BTW',
+            'tax_zone_id' => $taxZone->id,
             'priority' => 1,
         ]);
 
-        $ukRate->taxRateAmounts()->createMany([
+        $rate->taxRateAmounts()->createMany([
             [
-                'percentage' => 20,
+                'percentage' => 21,
                 'tax_class_id' => $taxClass->id,
             ],
         ]);

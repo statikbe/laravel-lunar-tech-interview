@@ -20,10 +20,10 @@ class InterviewSeederTest extends TestCase
 
         $user = User::where('email', 'klant@interview.test')->first();
 
-        $this->assertNotNull($user, 'De vaste klantlogin ontbreekt.');
+        $this->assertNotNull($user, 'The fixed customer login is missing.');
         $this->assertTrue(
             Hash::check('password', $user->password),
-            'Het vaste wachtwoord van de klant werkt niet.',
+            'The fixed customer password does not work.',
         );
     }
 
@@ -34,10 +34,10 @@ class InterviewSeederTest extends TestCase
         $user = User::where('email', 'klant@interview.test')->firstOrFail();
         $customer = Customer::where('company_name', 'Interview Testklant')->first();
 
-        $this->assertNotNull($customer, 'De Lunar-klant ontbreekt.');
+        $this->assertNotNull($customer, 'The Lunar customer is missing.');
         $this->assertTrue(
             $customer->users()->where('users.id', $user->id)->exists(),
-            'De klantlogin is niet aan de Lunar-klant gekoppeld.',
+            'The customer login is not linked to the Lunar customer.',
         );
     }
 
@@ -47,15 +47,15 @@ class InterviewSeederTest extends TestCase
 
         $staff = Staff::where('email', 'admin@interview.test')->first();
 
-        $this->assertNotNull($staff, 'De vaste beheerder ontbreekt.');
-        $this->assertTrue((bool) $staff->admin, 'De beheerder heeft de admin-vlag niet.');
+        $this->assertNotNull($staff, 'The fixed admin is missing.');
+        $this->assertTrue((bool) $staff->admin, 'The admin is missing the admin flag.');
         $this->assertTrue(
             $staff->hasRole('admin'),
-            'De beheerder heeft de rol admin niet en ziet dus een leeg paneel.',
+            'The admin has no admin role and would see an empty panel.',
         );
         $this->assertTrue(
             Hash::check('password', $staff->password),
-            'Het vaste wachtwoord van de beheerder werkt niet.',
+            'The fixed admin password does not work.',
         );
     }
 

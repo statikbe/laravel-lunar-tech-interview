@@ -23,8 +23,6 @@
         </div>
 
         <div class="flex items-center justify-between flex-1 ml-4 lg:justify-end">
-            <x-header.search class="max-w-sm mr-4" />
-
             @auth
                 <span class="hidden mr-4 text-sm text-gray-600 sm:inline">
                     {{ auth()->user()->name }}
@@ -41,7 +39,7 @@
                         class="text-sm font-medium text-gray-700 hover:text-indigo-600"
                         type="submit"
                     >
-                        Uitloggen
+                        Sign out
                     </button>
                 </form>
             @else
@@ -49,7 +47,7 @@
                     class="hidden mr-4 text-sm font-medium text-gray-700 sm:inline hover:text-indigo-600"
                     href="{{ route('login') }}"
                 >
-                    Inloggen
+                    Sign in
                 </a>
             @endauth
 

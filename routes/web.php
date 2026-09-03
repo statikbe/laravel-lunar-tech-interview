@@ -6,7 +6,6 @@ use App\Livewire\CollectionPage;
 use App\Livewire\Home;
 use App\Livewire\LoginPage;
 use App\Livewire\ProductPage;
-use App\Livewire\SearchPage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,8 +25,6 @@ Route::get('/', Home::class);
 Route::get('/collections/{slug}', CollectionPage::class)->name('collection.view');
 
 Route::get('/products/{slug}', ProductPage::class)->name('product.view');
-
-Route::get('search', SearchPage::class)->name('search.view');
 
 Route::get('checkout', CheckoutPage::class)->name('checkout.view');
 

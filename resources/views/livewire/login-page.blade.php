@@ -1,10 +1,10 @@
 <div class="max-w-md px-4 py-16 mx-auto sm:px-6 lg:px-8">
     <h1 class="text-2xl font-bold">
-        Inloggen
+        Sign in
     </h1>
 
     <p class="mt-2 text-gray-600">
-        Log in om je bestellingen en je gegevens terug te vinden.
+        Sign in to pick up where you left off.
     </p>
 
     <form
@@ -16,7 +16,7 @@
                 class="block text-sm font-medium text-gray-700"
                 for="email"
             >
-                E-mailadres
+                Email address
             </label>
 
             <input
@@ -40,7 +40,7 @@
                 class="block text-sm font-medium text-gray-700"
                 for="password"
             >
-                Wachtwoord
+                Password
             </label>
 
             <input
@@ -65,14 +65,14 @@
                 type="checkbox"
                 wire:model="remember"
             >
-            Ingelogd blijven
+            Remember me
         </label>
 
         <button
             class="w-full px-6 py-3 font-medium text-white bg-indigo-600 rounded shadow hover:bg-indigo-700 active:bg-indigo-500 focus:outline-none focus:ring"
             type="submit"
         >
-            Inloggen
+            Sign in
         </button>
     </form>
 </div>

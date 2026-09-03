@@ -16,11 +16,6 @@
                 </span>
             </h1>
 
-            <p class="mt-4 font-medium sm:leading-relaxed sm:text-xl">
-                This is an example of a classic e-commerce store built with Lunar.
-                We are currently making a screencast series to show you how we did it!
-            </p>
-
             <div class="flex flex-wrap justify-center gap-4 mt-8">
                 <a class="block w-full px-12 py-3 font-medium text-white bg-indigo-600 rounded shadow sm:w-auto active:bg-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring"
                    href="/lunar"

@@ -35,10 +35,14 @@ De eerste keer duurt dit een paar minuten. Daarna:
 
 Inloggen:
 
-| Rol | E-mail | Wachtwoord |
-|---|---|---|
-| Klant | `klant@interview.test` | `password` |
-| Beheerder | `admin@interview.test` | `password` |
+| Rol | Waar | E-mail | Wachtwoord |
+|---|---|---|---|
+| Klant | `/login` | `klant@interview.test` | `password` |
+| Beheerder | `/lunar` | `admin@interview.test` | `password` |
+
+De klant en de beheerder zijn twee verschillende modellen. De winkel
+authenticeert een gewone `App\Models\User`; het adminpaneel
+authenticeert `Lunar\Admin\Models\Staff` op een eigen guard.
 
 Opnieuw beginnen met verse data:
 

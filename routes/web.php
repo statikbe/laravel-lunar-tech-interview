@@ -4,8 +4,10 @@ use App\Livewire\CheckoutPage;
 use App\Livewire\CheckoutSuccessPage;
 use App\Livewire\CollectionPage;
 use App\Livewire\Home;
+use App\Livewire\LoginPage;
 use App\Livewire\ProductPage;
 use App\Livewire\SearchPage;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,3 +32,14 @@ Route::get('search', SearchPage::class)->name('search.view');
 Route::get('checkout', CheckoutPage::class)->name('checkout.view');
 
 Route::get('checkout/success', CheckoutSuccessPage::class)->name('checkout-success.view');
+
+Route::get('login', LoginPage::class)->name('login');
+
+Route::post('logout', function () {
+    Auth::logout();
+
+    session()->invalidate();
+    session()->regenerateToken();
+
+    return redirect('/');
+})->name('logout');

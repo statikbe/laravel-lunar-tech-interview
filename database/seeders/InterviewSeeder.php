@@ -29,9 +29,9 @@ class InterviewSeeder extends Seeder
     private function createCustomerLogin(): void
     {
         $user = User::updateOrCreate(
-            ['email' => 'kandidaat@interview.test'],
+            ['email' => 'klant@interview.test'],
             [
-                'name' => 'Interview Kandidaat',
+                'name' => 'Interview Klant',
                 'password' => Hash::make('password'),
                 'email_verified_at' => now(),
             ],
@@ -41,7 +41,7 @@ class InterviewSeeder extends Seeder
             ['company_name' => 'Interview Testklant'],
             [
                 'first_name' => 'Interview',
-                'last_name' => 'Kandidaat',
+                'last_name' => 'Klant',
             ],
         );
 

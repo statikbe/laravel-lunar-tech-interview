@@ -1,0 +1,40 @@
+#!/bin/bash
+
+## Description: Richt de winkel volledig in: migraties, Lunar, demodata en de vaste logins
+## Usage: setup
+## Example: "ddev setup"
+
+set -euo pipefail
+
+echo "==> Migraties (dit wist de bestaande database)"
+php artisan migrate:fresh --force
+
+# lunar:install maakt zijn standaarddata pas aan nadat er een beheerder is, en
+# vraagt daar interactief om. We maken die eerst zelf, dan slaat install de
+# vraag over en loopt hij door naar kanaal, valuta, collectiegroep en de rest.
+echo "==> Beheerder aanmaken"
+php artisan lunar:create-admin \
+    --firstname=Interview \
+    --lastname=Beheerder \
+    --email=admin@interview.test \
+    --password=password
+
+echo "==> Lunar installeren"
+php artisan lunar:install --no-interaction
+
+echo "==> Demodata en vaste logins"
+php artisan db:seed --force
+
+php artisan storage:link || true
+
+cat <<'DONE'
+
+Klaar.
+
+  Winkel      https://laravel-lunar-tech-interview.ddev.site
+  Adminpaneel https://laravel-lunar-tech-interview.ddev.site/lunar
+
+  Klant       klant@interview.test / password
+  Beheerder   admin@interview.test / password
+
+DONE

@@ -18,7 +18,7 @@ class InterviewSeederTest extends TestCase
     {
         $this->seed(InterviewSeeder::class);
 
-        $user = User::where('email', 'kandidaat@interview.test')->first();
+        $user = User::where('email', 'klant@interview.test')->first();
 
         $this->assertNotNull($user, 'De vaste klantlogin ontbreekt.');
         $this->assertTrue(
@@ -31,7 +31,7 @@ class InterviewSeederTest extends TestCase
     {
         $this->seed(InterviewSeeder::class);
 
-        $user = User::where('email', 'kandidaat@interview.test')->firstOrFail();
+        $user = User::where('email', 'klant@interview.test')->firstOrFail();
         $customer = Customer::where('company_name', 'Interview Testklant')->first();
 
         $this->assertNotNull($customer, 'De Lunar-klant ontbreekt.');
@@ -64,7 +64,7 @@ class InterviewSeederTest extends TestCase
         $this->seed(InterviewSeeder::class);
         $this->seed(InterviewSeeder::class);
 
-        $this->assertSame(1, User::where('email', 'kandidaat@interview.test')->count());
+        $this->assertSame(1, User::where('email', 'klant@interview.test')->count());
         $this->assertSame(1, Staff::where('email', 'admin@interview.test')->count());
         $this->assertSame(1, Customer::where('company_name', 'Interview Testklant')->count());
     }

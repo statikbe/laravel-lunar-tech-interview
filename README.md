@@ -17,8 +17,14 @@ Composer op je eigen machine.
 
 ```bash
 ddev start
+ddev composer install
+ddev setup
 ddev launch
 ```
+
+`ddev setup` richt de database in: migraties, Lunar, demodata en de vaste
+logins. Je kunt hem later opnieuw draaien om met een schone lei te
+beginnen — hij wist wel alles wat erin stond.
 
 De eerste keer duurt dit een paar minuten. Daarna:
 
@@ -31,13 +37,13 @@ Inloggen:
 
 | Rol | E-mail | Wachtwoord |
 |---|---|---|
-| Klant | `kandidaat@interview.test` | `password` |
+| Klant | `klant@interview.test` | `password` |
 | Beheerder | `admin@interview.test` | `password` |
 
 Opnieuw beginnen met verse data:
 
 ```bash
-ddev artisan migrate:fresh --seed
+ddev setup
 ```
 
 ## Tests draaien

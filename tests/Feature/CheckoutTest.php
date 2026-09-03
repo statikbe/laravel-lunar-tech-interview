@@ -95,7 +95,7 @@ class CheckoutTest extends TestCase
 
         $address = [
             'first_name' => 'Interview',
-            'last_name' => 'Kandidaat',
+            'last_name' => 'Klant',
             'line_one' => 'Teststraat 1',
             'city' => 'Gent',
             'postcode' => '9000',

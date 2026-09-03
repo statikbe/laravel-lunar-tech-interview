@@ -21,10 +21,14 @@ yarn-error.log
 /.vscode
 .DS_Store
 .lando.local.yml
-composer.lock
-package-lock.json
+# composer.lock, package-lock.json en config/lunar zijn bewust WEL gecommit.
+# Zonder lockfiles lost een install elke keer opnieuw op en krijgt niet
+# iedereen dezelfde codebase. En config/lunar is waar de cart-pijplijn
+# geregistreerd wordt: werk daarin moet zichtbaar zijn in de historie.
+# composer.lock
+# package-lock.json
 yarn.lock
-config/lunar
+# config/lunar
 public/build
 meilisearch/
 .phpunit.cache/test-results

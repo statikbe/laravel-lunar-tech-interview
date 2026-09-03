@@ -22,9 +22,9 @@ ddev setup
 ddev launch
 ```
 
-`ddev setup` richt de database in: migraties, Lunar, demodata en de vaste
-logins. Je kunt hem later opnieuw draaien om met een schone lei te
-beginnen — hij wist wel alles wat erin stond.
+`ddev setup` richt alles in: migraties, Lunar, demodata, de vaste logins
+en de frontend-build. Je kunt hem later opnieuw draaien om met een schone
+lei te beginnen — hij wist wel alles wat in de database stond.
 
 De eerste keer duurt dit een paar minuten. Daarna:
 
@@ -60,6 +60,22 @@ ddev artisan test --filter=CartTotalsTest
 
 De tests draaien op een aparte database (`testing`), dus de demo-data in
 de winkel blijft staan als je ze draait.
+
+## Styling aanpassen
+
+CSS en JavaScript gaan door Vite. Pas je iets aan in `resources/css/` of
+`resources/js/`, of gebruik je een Tailwind-klasse die nog niet ergens in
+de views voorkomt, dan moet je opnieuw bouwen:
+
+```bash
+ddev npm run build
+```
+
+Of laat het meekijken terwijl je werkt:
+
+```bash
+ddev npm run dev
+```
 
 ## Artisan, composer, database
 

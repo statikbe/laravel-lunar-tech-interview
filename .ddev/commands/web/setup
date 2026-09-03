@@ -27,6 +27,10 @@ php artisan db:seed --force
 
 php artisan storage:link || true
 
+echo "==> Frontend bouwen"
+npm install --no-audit --no-fund
+npm run build
+
 echo
 echo "Klaar."
 echo
